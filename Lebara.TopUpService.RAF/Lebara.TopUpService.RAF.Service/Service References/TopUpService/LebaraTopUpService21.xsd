@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://Lebara.TopUp.Service.Schema.TopUpHistoryRequest" elementFormDefault="qualified" targetNamespace="http://Lebara.TopUp.Service.Schema.TopUpHistoryRequest" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd2" namespace="http://Lebara.TopUp.Service.Schema.RequestHeader" />
+  <xs:complexType name="TopUpHistoryRequest">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://Lebara.TopUp.Service.Schema.RequestHeader" minOccurs="0" maxOccurs="1" ref="q1:RequestHeader" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="MSISDN" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="startDate" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="endDate" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="numberOfRecords" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

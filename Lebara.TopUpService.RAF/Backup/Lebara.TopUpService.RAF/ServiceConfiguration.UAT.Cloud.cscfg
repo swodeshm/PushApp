@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="Lebara.TopUpService.RAF" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2013-10.2.2">
+  <Role name="Lebara.TopUpService.RAF.Service">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=lbrcuriostor;AccountKey=yWe8Dd4VFEsC/nkEkiVppxlBrrf0rO7GLzP/3hC7eF4+S/jhXAcRYtxu2r7Y6KPWn8mSP+/c5+WUzbZSFi1D+A==" />
+      <Setting name="ConnectionString" value="data source=(local);initial catalog=LebaraTopUp;integrated security=False;user id=sa;password=Aditi01*;multipleactiveresultsets=True;" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="lebaraadmin" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCECnlHM6YHZikTXUBO5f41agwDQYJKoZIhvcNAQEBBQAEggEAx5EOqH4jZ9ngjy7wzq8EM1kzEjAg50r5yLOO/wnibi6UZzn0nt/B5RfhCsY0btakikJ/3733D1LDgdOVfFLH03YO5lZ+NlS94coJO/5YH2UV17Apag8ELpvo6S+K3X7v/NKOPSk0a1I7Z/iRoMiebf1YTMZynKCM/5cjF+Yx1Ph4vvla7eMq+t1uVW2AofIWQQnIi+1ISsR+fgcXkdcqBNPusncH9Fs6rX2+2b3W0s7RfaMXu5KjjTUvJPpKRUEYCBqhcmXuShHuP6dK8RgoaNOX7sewNFFJ4FLYzTxYdA3xGUDzUzKpMNdxNvp7f27b6zEHPU9EfnXInCLnVF2VIzAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECEF81p/rnkVkgBBAuorkzs07KRH8tj1A+SIu" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2015-12-22T23:59:59.0000000+05:30" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
+    </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="CC6C2789924BC65F70E82D294251752B05AB1D9A" thumbprintAlgorithm="sha1" />
+    </Certificates>
+  </Role>
+</ServiceConfiguration>

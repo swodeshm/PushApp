@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="Lebara.TopUpService.RAF" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="LebaraVoipRAF">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="bizdeploy" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBlQYJKoZIhvcNAQcDoIIBhjCCAYICAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEBwloD08hiqwRhWg80OaFswwDQYJKoZIhvcNAQEBBQAEggEAEKgoL6GuM3xK2RKdjhFuN+CM2JhsVnFD5oopSOODLbRMh7xLnc1xdRHDsTxBJ1FrfHEkNhuuyIGGTAqECxIN4J0ZEL1qoGAyErMVQuzjScBXqt6E4tRSzEYppD5tHJuEfThM2sJ6xZgDbtZ3cGkXwUk6nZMk1qO0ivHCNmkEQNcy1NC4XK6Kh/A5QAU8TfuKVbp+seFdYuFBsfqP7TyIXWtG2YhQcMZzq7MGZ4yjw7Ik/W6xej//bhkArX/bVljcIkXaHIWMiGg8Wt3AbsM85O19DhM95o2faQhWZVLaAkJXIwD8u6dCY+5Yhv+zGWfuQa0JJtmONwRIW4yAYlNhmzArBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECG64t8zTud4EgAj+n0zadHo2ew==" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2015-12-22T23:59:59.0000000+05:30" />
+      <Setting name="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://lebarainwohandling.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=VQhxJmqB9B9P+XyrXuL6WfbhDZeA4Pd1fD8eM2lE6J4=" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+    </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="D2D4D3B1C3C9DA646B58EF84E2C25E6FDB010FE1" thumbprintAlgorithm="sha1" />
+    </Certificates>
+  </Role>
+  <!--<NetworkConfiguration>
+    -->
+  <!--<VirtualNetworkSite name="TCT-VPN-AZURE-PROD" />-->
+  <!--
+    <VirtualNetworkSite name="tct-vpn-azuredev" />
+    <AddressAssignments>
+      <InstanceAddress roleName="LebaraVoipRAF">
+        <Subnets>
+          <Subnet name="LWS" />
+        </Subnets>
+      </InstanceAddress>
+    </AddressAssignments>
+  </NetworkConfiguration>-->
+  <NetworkConfiguration>
+    <VirtualNetworkSite name="NTTexpressroute" />
+    <AddressAssignments>
+      <InstanceAddress roleName="LebaraVoipRAF">
+        <Subnets>
+          <Subnet name="Subnet-APP" />
+        </Subnets>
+      </InstanceAddress>
+    </AddressAssignments>
+  </NetworkConfiguration>
+</ServiceConfiguration>

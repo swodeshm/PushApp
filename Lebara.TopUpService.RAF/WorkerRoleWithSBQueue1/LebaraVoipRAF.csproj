@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{25994B2A-4DB7-4A41-92BB-5D183EC5FE78}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WorkerRoleWithSBQueue1</RootNamespace>
+    <AssemblyName>WorkerRoleWithSBQueue1</AssemblyName>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RoleType>Worker</RoleType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Lebara.IN.BossC4BContracts">
+      <HintPath>..\Lebara.IN.BossC4BContracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceBus, Version=2.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WindowsAzure.ServiceBus.2.5.0.0\lib\net40-full\Microsoft.ServiceBus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=2.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=2.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Spatial, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.6.2\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enums.cs" />
+    <Compile Include="Parameters.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="RAFDataClass.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RAFDataClass.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="RestClient.cs" />
+    <Compile Include="RestServiceCalls.cs" />
+    <Compile Include="Service References\GetNewCRMId\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\OCSBusinessService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\IN2NewService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Utility.cs" />
+    <Compile Include="WorkerRole.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="RAFDataClass.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>RAFDataClass.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GetNewCRMId\GenerateNewCRMId.xsd" />
+    <None Include="Service References\GetNewCRMId\Service.wsdl" />
+    <None Include="Service References\GetNewCRMId\WorkerRoleWithSBQueue1.GetNewCRMId.NewCRMIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\Main1.wsdl" />
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.AccountAdjustmentResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.ActivateResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.ChangeAppendantProductResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.ChangeMainProductResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.ChangeSubscriberBasicInformationResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.ChangeSubscriberLowBalancePromptResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.ClaimMissingResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.DebitAccountResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.DeleteRechargeBlackListResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.DeleteSubscriberResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.DisclaimMissingResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.GenericINResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.GetAccountInformationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.GetAccountInformationResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.GetTopupHistoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.GetTopupHistoryResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.GetVoucherInformationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.GetVoucherInformationResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.KPNDeactivateMSISDNResponeMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.ModifyValidityResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.ModifyVoicemailLanguageResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.ModifyVoucherResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.PaymentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.PaymentResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.ProvisionSubscriberResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.QuerySubscriberLowerBalancePromptResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.QuerySubscriberLowerBalancePromptResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.ReactivateResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.ResetVoicemailPasswordResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.ReversePaymentResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.SuspendResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.SwapMSISDNResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.TransferBalanceResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.UVCCancelTaskResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.UVCCustomizeTaskResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.UVCGetTaskIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.UVCGetTaskIDResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.UVCQueryTaskResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.UVCQueryTaskResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.VoucherRechargeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\IN2NewService\WorkerRoleWithSBQueue1.IN2NewService.VoucherRechargeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\Main.wsdl" />
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.AccountAdjustmentResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.ActivateResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.ChangeAppendantProductResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.ChangeMainProductResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.ChangeSubscriberBasicInformationResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.ChangeSubscriberLowBalancePromptResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.ClaimMissingResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.DebitAccountResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.DeleteRechargeBlackListResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.DeleteSubscriberResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.DisclaimMissingResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.GenericINResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.GetAccountInformationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.GetAccountInformationResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.GetTopupHistoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.GetTopupHistoryResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.GetVoucherInformationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.GetVoucherInformationResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.KPNDeactivateMSISDNResponeMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.ModifyValidityResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.ModifyVoicemailLanguageResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.ModifyVoucherResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.PaymentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.PaymentResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.ProvisionSubscriberResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.QuerySubscriberLowerBalancePromptResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.QuerySubscriberLowerBalancePromptResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.ReactivateResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.ResetVoicemailPasswordResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.ReversePaymentResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.SuspendResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.SwapMSISDNResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.TransferBalanceResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.UVCCancelTaskResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.UVCCustomizeTaskResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.UVCGetTaskIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.UVCGetTaskIDResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.UVCQueryTaskResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.UVCQueryTaskResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.VoucherRechargeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OCSBusinessService\WorkerRoleWithSBQueue1.OCSBusinessService.VoucherRechargeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RAFDataClass.dbml.layout">
+      <DependentUpon>RAFDataClass.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\GetNewCRMId\" />
+    <WCFMetadataStorage Include="Service References\OCSBusinessService\" />
+    <WCFMetadataStorage Include="Service References\IN2NewService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\IN2NewService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\IN2NewService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\IN2NewService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OCSBusinessService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OCSBusinessService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OCSBusinessService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GetNewCRMId\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GetNewCRMId\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GetNewCRMId\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

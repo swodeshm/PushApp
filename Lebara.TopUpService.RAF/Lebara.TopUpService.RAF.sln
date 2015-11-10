@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "Lebara.TopUpService.RAF", "Lebara.TopUpService.RAF\Lebara.TopUpService.RAF.ccproj", "{2A53411F-53BC-4526-8086-F93DE10A4A22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lebara.TopUpService.RAF.Service", "Lebara.TopUpService.RAF.Service\Lebara.TopUpService.RAF.Service.csproj", "{997069A7-E372-483A-B139-49133D8935A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LebaraVoipRAF", "WorkerRoleWithSBQueue1\LebaraVoipRAF.csproj", "{25994B2A-4DB7-4A41-92BB-5D183EC5FE78}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A53411F-53BC-4526-8086-F93DE10A4A22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A53411F-53BC-4526-8086-F93DE10A4A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A53411F-53BC-4526-8086-F93DE10A4A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A53411F-53BC-4526-8086-F93DE10A4A22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{997069A7-E372-483A-B139-49133D8935A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{997069A7-E372-483A-B139-49133D8935A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{997069A7-E372-483A-B139-49133D8935A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{997069A7-E372-483A-B139-49133D8935A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25994B2A-4DB7-4A41-92BB-5D183EC5FE78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25994B2A-4DB7-4A41-92BB-5D183EC5FE78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25994B2A-4DB7-4A41-92BB-5D183EC5FE78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25994B2A-4DB7-4A41-92BB-5D183EC5FE78}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.ServiceBus.6.0.1304.0\lib\NET45
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4
+	EndGlobalSection
+EndGlobal

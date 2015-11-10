@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://Lebara.TopUp.Service.Schema.VoucherRechargeRequest" elementFormDefault="qualified" targetNamespace="http://Lebara.TopUp.Service.Schema.VoucherRechargeRequest" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd2" namespace="http://Lebara.TopUp.Service.Schema.RequestHeader" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd21" namespace="http://Lebara.TopUp.Service.Schema.PaymentRequest" />
+  <xs:complexType name="VoucherRechargeRequest">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://Lebara.TopUp.Service.Schema.RequestHeader" minOccurs="0" maxOccurs="1" ref="q1:RequestHeader" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="Body">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="MSISDN" nillable="true" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="PIN" nillable="true" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="TransactionID" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="ProductID" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="Type" type="xs:string" />
+            <xs:element xmlns:q2="http://Lebara.TopUp.Service.Schema.PaymentRequest" minOccurs="0" maxOccurs="1" ref="q2:Payment" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

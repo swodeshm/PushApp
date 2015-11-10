@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://Lebara.TopUp.Service.Schema.ExchangeSSOResponse" elementFormDefault="qualified" targetNamespace="http://Lebara.TopUp.Service.Schema.ExchangeSSOResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ExchangeSSOResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="Locale" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="StatusCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="StatusDescription" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="ErrorCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="SourceMSISDN" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="EmailID" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="BackURL" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="UniqueID" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="ProductID" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

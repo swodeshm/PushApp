@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://LebaraTopUpServices.com" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LebaraTopUpService" targetNamespace="http://LebaraTopUpServices.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://LebaraTopUpServices.com/Imports">
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd0" namespace="http://LebaraTopUpServices.com" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd1" namespace="http://Lebara.TopUp.Service.Schema.ValidateMSISDNRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd2" namespace="http://Lebara.TopUp.Service.Schema.RequestHeader" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd3" namespace="http://Lebara.TopUp.Service.Schema.ValidateMSISDNResponse" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd4" namespace="http://Lebara.TopUp.Service.Schema.GetDenominationsRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd5" namespace="http://Lebara.TopUp.Service.Schema.GetDenominationsResponse" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd6" namespace="http://Lebara.TopUp.Service.Schema.TopUpReversalRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd7" namespace="http://Lebara.TopUp.Service.Schema.TopUpReversalResponse" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd8" namespace="http://Lebara.TopUp.Service.Schema.SendSMSRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd9" namespace="http://Lebara.TopUp.Service.Schema.SendSMSResponse" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd10" namespace="http://Lebara.TopUp.Service.Schema.GetAccountInformationRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd11" namespace="http://Lebara.TopUp.Service.Schema.GetAccountInformationResponse" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd12" namespace="http://Lebara.TopUp.Service.Schema.ApplyRemittancePromotionRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd13" namespace="http://Lebara.TopUp.Service.Schema.ApplyRemittancePromotionResponse" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd14" namespace="http://Lebara.TopUp.Service.Schema.TopUpRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd15" namespace="http://Lebara.TopUp.Service.Schema.TopUpResponse" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd16" namespace="http://Lebara.TopUp.Service.Schema.DeactivateVoucherRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd17" namespace="http://Lebara.TopUp.Service.Schema.DeactivateVoucherResponse" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd18" namespace="http://Lebara.TopUp.Service.Schema.ExchangeSSORequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd19" namespace="http://Lebara.TopUp.Service.Schema.ExchangeSSOResponse" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd20" namespace="http://Lebara.TopUp.Service.Schema.VoucherRechargeRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd21" namespace="http://Lebara.TopUp.Service.Schema.PaymentRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd22" namespace="http://Lebara.TopUp.Service.Schema.VoucherRechargeResponse" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd23" namespace="http://Lebara.TopUp.Service.Schema.ProductEligibilityRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd24" namespace="http://Lebara.TopUp.Service.Schema.ProductEligibilityResponse" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd25" namespace="http://Lebara.TopUp.Service.Schema.SetupAutoTopUpRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd26" namespace="http://Lebara.TopUp.Service.Schema.SetupAutoTopUpResponse" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd27" namespace="http://Lebara.TopUp.Service.Schema.CreateSubscriberRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd28" namespace="http://Lebara.TopUp.Service.Schema.CreateSubscriberResponse" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd29" namespace="http://Lebara.TopUp.Service.Schema.QueryVoucherRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd30" namespace="http://Lebara.TopUp.Service.Schema.QueryVoucherResponse" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd31" namespace="http://Lebara.TopUp.Service.Schema.UsageHistoryRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd32" namespace="http://Lebara.TopUp.Service.Schema.UsageHistoryResponse" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd33" namespace="http://Lebara.Topup.Service.Common.Schema" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd34" namespace="http://Lebara.TopUp.Service.Schema.TopUpHistoryRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd35" namespace="http://Lebara.TopUp.Service.Schema.TopUpHistoryResponse" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd36" namespace="http://Lebara.TopUp.Service.Schema.SetReferralRequest" />
+      <xsd:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd37" namespace="http://Lebara.TopUp.Service.Schema.SetReferralResponse" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ValidateMSISDNRequest">
+    <wsdl:part name="parameters" element="tns:ValidateMSISDNRequest" />
+  </wsdl:message>
+  <wsdl:message name="ValidateMSISDNResponse">
+    <wsdl:part name="parameters" element="tns:ValidateMSISDNResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDenominationsRequest">
+    <wsdl:part name="parameters" element="tns:GetDenominationsRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetDenominationsResponse">
+    <wsdl:part name="parameters" element="tns:GetDenominationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="TopUpReversalRequest">
+    <wsdl:part name="parameters" element="tns:TopUpReversalRequest" />
+  </wsdl:message>
+  <wsdl:message name="TopUpReversalResponse">
+    <wsdl:part name="parameters" element="tns:TopUpReversalResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSRequest">
+    <wsdl:part name="parameters" element="tns:SendSMSRequest" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSResponse">
+    <wsdl:part name="parameters" element="tns:SendSMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountInformationRequest">
+    <wsdl:part name="parameters" element="tns:GetAccountInformationRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountInformationResponse">
+    <wsdl:part name="parameters" element="tns:GetAccountInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApplyRemittancePromotionRequest">
+    <wsdl:part name="parameters" element="tns:ApplyRemittancePromotionRequest" />
+  </wsdl:message>
+  <wsdl:message name="ApplyRemittancePromotionResponse">
+    <wsdl:part name="parameters" element="tns:ApplyRemittancePromotionResponse" />
+  </wsdl:message>
+  <wsdl:message name="TopUpRequest">
+    <wsdl:part name="parameters" element="tns:TopUpRequest" />
+  </wsdl:message>
+  <wsdl:message name="TopUpResponse">
+    <wsdl:part name="parameters" element="tns:TopUpResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeactivateVoucherRequest">
+    <wsdl:part name="parameters" element="tns:DeactivateVoucherRequest" />
+  </wsdl:message>
+  <wsdl:message name="DeactivateVoucherResponse">
+    <wsdl:part name="parameters" element="tns:DeactivateVoucherResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExchangeSSORequest">
+    <wsdl:part name="ExchangeSSORequestField" element="tns:ExchangeSSORequestField" />
+  </wsdl:message>
+  <wsdl:message name="ExchangeSSOResponse">
+    <wsdl:part name="ExchangeSSOResponseField" element="tns:ExchangeSSOResponseField" />
+  </wsdl:message>
+  <wsdl:message name="VoucherRechargeRequest">
+    <wsdl:part name="VoucherRechargeRequestField" element="tns:VoucherRechargeRequestField" />
+  </wsdl:message>
+  <wsdl:message name="VoucherRechargeResponse">
+    <wsdl:part name="VoucherRechargeResponseField" element="tns:VoucherRechargeResponseField" />
+  </wsdl:message>
+  <wsdl:message name="ProductEligibilityRequest">
+    <wsdl:part name="ProductEligibilityRequestField" element="tns:ProductEligibilityRequestField" />
+  </wsdl:message>
+  <wsdl:message name="ProductEligibilityResponse">
+    <wsdl:part name="ProductEligibilityResponseField" element="tns:ProductEligibilityResponseField" />
+  </wsdl:message>
+  <wsdl:message name="SetupAutoTopUpRequest">
+    <wsdl:part name="SetupAutoTopUpRequestField" element="tns:SetupAutoTopUpRequestField" />
+  </wsdl:message>
+  <wsdl:message name="SetupAutoTopUpResponse">
+    <wsdl:part name="SetupAutoTopUpResponseField" element="tns:SetupAutoTopUpResponseField" />
+  </wsdl:message>
+  <wsdl:message name="CreateSubscriberRequest">
+    <wsdl:part name="CreateSubscriberRequestField" element="tns:CreateSubscriberRequestField" />
+  </wsdl:message>
+  <wsdl:message name="CreateSubscriberResponse">
+    <wsdl:part name="CreateSubscriberResponseField" element="tns:CreateSubscriberResponseField" />
+  </wsdl:message>
+  <wsdl:message name="QueryVoucherRequest">
+    <wsdl:part name="QueryVoucherRequestField" element="tns:QueryVoucherRequestField" />
+  </wsdl:message>
+  <wsdl:message name="QueryVoucherResponse">
+    <wsdl:part name="QueryVoucherResponseField" element="tns:QueryVoucherResponseField" />
+  </wsdl:message>
+  <wsdl:message name="UsageHistoryRequest">
+    <wsdl:part name="UsageHistoryRequestField" element="tns:UsageHistoryRequestField" />
+  </wsdl:message>
+  <wsdl:message name="UsageHistoryResponse">
+    <wsdl:part name="UsageHistoryResponseField" element="tns:UsageHistoryResponseField" />
+  </wsdl:message>
+  <wsdl:message name="TopUpHistoryRequest">
+    <wsdl:part name="TopUpHistoryRequestField" element="tns:TopUpHistoryRequestField" />
+  </wsdl:message>
+  <wsdl:message name="TopUpHistoryResponse">
+    <wsdl:part name="TopUpHistoryResponseField" element="tns:TopUpHistoryResponseField" />
+  </wsdl:message>
+  <wsdl:message name="SetReferralRequestMessage">
+    <wsdl:part name="SetReferralRequest" element="tns:SetReferralRequest" />
+  </wsdl:message>
+  <wsdl:message name="SetReferralResponseMessage">
+    <wsdl:part name="SetReferralResponse" element="tns:SetReferralResponse" />
+  </wsdl:message>
+  <wsdl:portType name="LebaraTopUpServiceContract">
+    <wsdl:operation name="ValidateMSISDN">
+      <wsdl:input wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/ValidateMSISDN" name="ValidateMSISDNRequest" message="tns:ValidateMSISDNRequest" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/ValidateMSISDNResponse" name="ValidateMSISDNResponse" message="tns:ValidateMSISDNResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDenominations">
+      <wsdl:input wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/GetDenominations" name="GetDenominationsRequest" message="tns:GetDenominationsRequest" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/GetDenominationsResponse" name="GetDenominationsResponse" message="tns:GetDenominationsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="TopUpReversal">
+      <wsdl:input wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/TopUpReversal" name="TopUpReversalRequest" message="tns:TopUpReversalRequest" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/TopUpReversalResponse" name="TopUpReversalResponse" message="tns:TopUpReversalResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <wsdl:input wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/SendSMS" name="SendSMSRequest" message="tns:SendSMSRequest" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/SendSMSResponse" name="SendSMSResponse" message="tns:SendSMSResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountInformation">
+      <wsdl:input wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/GetAccountInformation" name="GetAccountInformationRequest" message="tns:GetAccountInformationRequest" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/GetAccountInformationResponse" name="GetAccountInformationResponse" message="tns:GetAccountInformationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ApplyRemittancePromotion">
+      <wsdl:input wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/ApplyRemittancePromotion" name="ApplyRemittancePromotionRequest" message="tns:ApplyRemittancePromotionRequest" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/ApplyRemittancePromotionResponse" name="ApplyRemittancePromotionResponse" message="tns:ApplyRemittancePromotionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="TopUpRequest">
+      <wsdl:input wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/TopUpRequest" name="TopUpRequest" message="tns:TopUpRequest" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/TopUpRequestResponse" name="TopUpResponse" message="tns:TopUpResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateVoucher">
+      <wsdl:input wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/DeactivateVoucher" name="DeactivateVoucherRequest" message="tns:DeactivateVoucherRequest" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/DeactivateVoucherResponse" name="DeactivateVoucherResponse" message="tns:DeactivateVoucherResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeSSO">
+      <wsdl:input wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/ExchangeSSO" name="ExchangeSSORequest" message="tns:ExchangeSSORequest" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/ExchangeSSOResponse" name="ExchangeSSOResponse" message="tns:ExchangeSSOResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="VoucherRecharge">
+      <wsdl:input wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/VoucherRecharge" name="VoucherRechargeRequest" message="tns:VoucherRechargeRequest" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/VoucherRechargeResponse" name="VoucherRechargeResponse" message="tns:VoucherRechargeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductEligibility">
+      <wsdl:input wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/ProductEligibility" name="ProductEligibilityRequest" message="tns:ProductEligibilityRequest" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/ProductEligibilityResponse" name="ProductEligibilityResponse" message="tns:ProductEligibilityResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SetupAutoTopUp">
+      <wsdl:input wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/SetupAutoTopUp" name="SetupAutoTopUpRequest" message="tns:SetupAutoTopUpRequest" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/SetupAutoTopUpResponse" name="SetupAutoTopUpResponse" message="tns:SetupAutoTopUpResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateSubscriber">
+      <wsdl:input wsaw:Action="CreateSubscriber" name="CreateSubscriberRequest" message="tns:CreateSubscriberRequest" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/CreateSubscriberResponse" name="CreateSubscriberResponse" message="tns:CreateSubscriberResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryVoucher">
+      <wsdl:input wsaw:Action="QueryVoucher" name="QueryVoucherRequest" message="tns:QueryVoucherRequest" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/QueryVoucherResponse" name="QueryVoucherResponse" message="tns:QueryVoucherResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UsageHistory">
+      <wsdl:input wsaw:Action="UsageHistory" name="UsageHistoryRequest" message="tns:UsageHistoryRequest" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/UsageHistoryResponse" name="UsageHistoryResponse" message="tns:UsageHistoryResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="TopUpHistory">
+      <wsdl:input wsaw:Action="TopUpHistory" name="TopUpHistoryRequest" message="tns:TopUpHistoryRequest" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/TopUpHistoryResponse" name="TopUpHistoryResponse" message="tns:TopUpHistoryResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SetReferral">
+      <wsdl:input wsaw:Action="SetReferral" name="SetReferralRequestMessage" message="tns:SetReferralRequestMessage" />
+      <wsdl:output wsaw:Action="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/SetReferralResponse" name="SetReferralResponseMessage" message="tns:SetReferralResponseMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LebaraTopUpServiceEndPoint" type="tns:LebaraTopUpServiceContract">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ValidateMSISDN">
+      <soap:operation soapAction="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/ValidateMSISDN" style="document" />
+      <wsdl:input name="ValidateMSISDNRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ValidateMSISDNResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDenominations">
+      <soap:operation soapAction="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/GetDenominations" style="document" />
+      <wsdl:input name="GetDenominationsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetDenominationsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TopUpReversal">
+      <soap:operation soapAction="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/TopUpReversal" style="document" />
+      <wsdl:input name="TopUpReversalRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="TopUpReversalResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <soap:operation soapAction="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/SendSMS" style="document" />
+      <wsdl:input name="SendSMSRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SendSMSResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountInformation">
+      <soap:operation soapAction="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/GetAccountInformation" style="document" />
+      <wsdl:input name="GetAccountInformationRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAccountInformationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyRemittancePromotion">
+      <soap:operation soapAction="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/ApplyRemittancePromotion" style="document" />
+      <wsdl:input name="ApplyRemittancePromotionRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ApplyRemittancePromotionResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TopUpRequest">
+      <soap:operation soapAction="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/TopUpRequest" style="document" />
+      <wsdl:input name="TopUpRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="TopUpResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateVoucher">
+      <soap:operation soapAction="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/DeactivateVoucher" style="document" />
+      <wsdl:input name="DeactivateVoucherRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DeactivateVoucherResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeSSO">
+      <soap:operation soapAction="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/ExchangeSSO" style="document" />
+      <wsdl:input name="ExchangeSSORequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ExchangeSSOResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VoucherRecharge">
+      <soap:operation soapAction="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/VoucherRecharge" style="document" />
+      <wsdl:input name="VoucherRechargeRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VoucherRechargeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductEligibility">
+      <soap:operation soapAction="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/ProductEligibility" style="document" />
+      <wsdl:input name="ProductEligibilityRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ProductEligibilityResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetupAutoTopUp">
+      <soap:operation soapAction="http://LebaraTopUpServices.com/LebaraTopUpServiceContract/SetupAutoTopUp" style="document" />
+      <wsdl:input name="SetupAutoTopUpRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SetupAutoTopUpResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSubscriber">
+      <soap:operation soapAction="CreateSubscriber" style="document" />
+      <wsdl:input name="CreateSubscriberRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateSubscriberResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryVoucher">
+      <soap:operation soapAction="QueryVoucher" style="document" />
+      <wsdl:input name="QueryVoucherRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="QueryVoucherResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsageHistory">
+      <soap:operation soapAction="UsageHistory" style="document" />
+      <wsdl:input name="UsageHistoryRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UsageHistoryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TopUpHistory">
+      <soap:operation soapAction="TopUpHistory" style="document" />
+      <wsdl:input name="TopUpHistoryRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="TopUpHistoryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetReferral">
+      <soap:operation soapAction="SetReferral" style="document" />
+      <wsdl:input name="SetReferralRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SetReferralResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LebaraTopUpService">
+    <wsdl:port name="LebaraTopUpServiceEndPoint" binding="tns:LebaraTopUpServiceEndPoint">
+      <soap:address location="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

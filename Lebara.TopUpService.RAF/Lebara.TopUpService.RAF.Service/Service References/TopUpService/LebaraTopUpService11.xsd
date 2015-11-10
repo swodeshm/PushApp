@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://Lebara.TopUp.Service.Schema.TopUpReversalRequest" elementFormDefault="qualified" targetNamespace="http://Lebara.TopUp.Service.Schema.TopUpReversalRequest" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd2" namespace="http://Lebara.TopUp.Service.Schema.RequestHeader" />
+  <xs:complexType name="TopUpReversalRequest">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://Lebara.TopUp.Service.Schema.RequestHeader" minOccurs="0" maxOccurs="1" ref="q1:RequestHeader" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="Body">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="pTransactionID" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

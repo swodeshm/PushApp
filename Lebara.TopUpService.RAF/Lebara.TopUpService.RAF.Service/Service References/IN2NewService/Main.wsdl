@@ -1,0 +1,1488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://Lebara.IN2.Common" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://tempuri.org/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Main" targetNamespace="http://Lebara.IN2.Common" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="IN2basicHttpEndPoint_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <http:NegotiateAuthentication xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http" />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://Lebara.IN2.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:complexType name="DebitAccountRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AdditionalInfo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Amount" type="xs:int" />
+          <xs:element minOccurs="0" name="DeductFromParent" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DebitAccountRequest" nillable="true" type="tns:DebitAccountRequest" />
+      <xs:complexType name="GenericINResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Result" type="tns:INResult" />
+          <xs:element minOccurs="0" name="ResultCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GenericINResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:simpleType name="INResult">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OK" />
+          <xs:enumeration value="ValidationError" />
+          <xs:enumeration value="SystemError" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="INResult" nillable="true" type="tns:INResult" />
+      <xs:element name="DebitAccountResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="PaymentRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AdditionalInfo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LogID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PaymentAmount" type="xs:int" />
+          <xs:element minOccurs="0" name="PaymentMode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TransactionID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PaymentRequest" nillable="true" type="tns:PaymentRequest" />
+      <xs:complexType name="PaymentResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="INResponse" nillable="true" type="tns:GenericINResponse" />
+          <xs:element minOccurs="0" name="TransactionID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PaymentResponse" nillable="true" type="tns:PaymentResponse" />
+      <xs:complexType name="ReversePaymentRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OldLogID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ReversePaymentRequest" nillable="true" type="tns:ReversePaymentRequest" />
+      <xs:element name="ReversePaymentResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="VoucherRechargeRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PIN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TransactionID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="VoucherRechargeRequest" nillable="true" type="tns:VoucherRechargeRequest" />
+      <xs:complexType name="VoucherRechargeResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="INResponse" nillable="true" type="tns:GenericINResponse" />
+          <xs:element minOccurs="0" name="FaceValue" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="NewBalance" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="NewExpiryDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ValidityPeriod" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="VoucherRechargeResponse" nillable="true" type="tns:VoucherRechargeResponse" />
+      <xs:complexType name="GetAccountInformationRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="QueryType" type="tns:INQueryType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetAccountInformationRequest" nillable="true" type="tns:GetAccountInformationRequest" />
+      <xs:simpleType name="INQueryType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="All" />
+          <xs:enumeration value="SubscriberState" />
+          <xs:enumeration value="SubscriberBalance" />
+          <xs:enumeration value="SubscriberBillCycle" />
+          <xs:enumeration value="SubscriberStaticInformation" />
+          <xs:enumeration value="SubscriberUsage" />
+          <xs:enumeration value="SubscriberCUG" />
+          <xs:enumeration value="SubscriberAdditionalInformation" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="INQueryType" nillable="true" type="tns:INQueryType" />
+      <xs:complexType name="GetAccountInformationResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IntegrationEnquiryResponse" nillable="true" type="tns:IntegrationEnquiryResult" />
+          <xs:element minOccurs="0" name="INResponse" nillable="true" type="tns:GenericINResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetAccountInformationResponse" nillable="true" type="tns:GetAccountInformationResponse" />
+      <xs:complexType name="IntegrationEnquiryResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BalanceRecordList" nillable="true" type="tns:ArrayOfBalanceRecordType" />
+          <xs:element minOccurs="0" name="BillingCycleDate" nillable="true" type="tns:BillingCycleDate" />
+          <xs:element minOccurs="0" name="CumulativeItemList" nillable="true" type="tns:ArrayOfCumulativeItem" />
+          <xs:element minOccurs="0" name="SubAttachedInfo" nillable="true" type="tns:SubAttachedInfo" />
+          <xs:element minOccurs="0" name="SubscriberInfo" nillable="true" type="tns:SubscriberInfo" />
+          <xs:element minOccurs="0" name="SubscriberState" nillable="true" type="tns:SubscriberState" />
+          <xs:element minOccurs="0" name="UserGroupList" nillable="true" type="tns:ArrayOfUserGroup" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="IntegrationEnquiryResult" nillable="true" type="tns:IntegrationEnquiryResult" />
+      <xs:complexType name="ArrayOfBalanceRecordType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="BalanceRecordType" nillable="true" type="tns:BalanceRecordType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfBalanceRecordType" nillable="true" type="tns:ArrayOfBalanceRecordType" />
+      <xs:complexType name="BalanceRecordType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BalanceDesc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Balance" type="xs:long" />
+          <xs:element minOccurs="0" name="MinMeasureId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="UnitType" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="AccountType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExpireTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="AccountCredit" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="AccountKey" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProductID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProductOrderKey" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BalanceRecordType" nillable="true" type="tns:BalanceRecordType" />
+      <xs:complexType name="BillingCycleDate">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BillCycleOpenDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="BillCycleEndDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="BillCycleType" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BillingCycleDate" nillable="true" type="tns:BillingCycleDate" />
+      <xs:complexType name="ArrayOfCumulativeItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="CumulativeItem" nillable="true" type="tns:CumulativeItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCumulativeItem" nillable="true" type="tns:ArrayOfCumulativeItem" />
+      <xs:complexType name="CumulativeItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CumulateID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="CumulateBeginTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CumulateEndTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CumulativeAmt" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CumulativeItem" nillable="true" type="tns:CumulativeItem" />
+      <xs:complexType name="SubAttachedInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChgMainProductTimes" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ChgMainPackageTimes" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SubAttachedInfo" nillable="true" type="tns:SubAttachedInfo" />
+      <xs:complexType name="SubscriberInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Subscriber" nillable="true" type="tns:SubscriberDetails" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:ArrayOfProduct" />
+          <xs:element minOccurs="0" name="Service" nillable="true" type="tns:ArrayOfService" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SubscriberInfo" nillable="true" type="tns:SubscriberInfo" />
+      <xs:complexType name="SubscriberDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BelToAreaID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BrandID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IMSI" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InitialCredit" type="xs:int" />
+          <xs:element minOccurs="0" name="IVRLanguage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MainProductID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PayMode" type="tns:SubscriberType" />
+          <xs:element minOccurs="0" name="PropertyList" nillable="true" type="tns:ArrayOfSimpleProperty" />
+          <xs:element minOccurs="0" name="RegistrationTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="SMSLanguage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="USSDLanguage" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SubscriberDetails" nillable="true" type="tns:SubscriberDetails" />
+      <xs:simpleType name="SubscriberType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Prepaid" />
+          <xs:enumeration value="Postpaid" />
+          <xs:enumeration value="Hybrid" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="SubscriberType" nillable="true" type="tns:SubscriberType" />
+      <xs:complexType name="ArrayOfSimpleProperty">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="SimpleProperty" nillable="true" type="tns:SimpleProperty" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfSimpleProperty" nillable="true" type="tns:ArrayOfSimpleProperty" />
+      <xs:complexType name="SimpleProperty">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SimpleProperty" nillable="true" type="tns:SimpleProperty" />
+      <xs:complexType name="ArrayOfProduct">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Product" nillable="true" type="tns:Product" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfProduct" nillable="true" type="tns:ArrayOfProduct" />
+      <xs:complexType name="Product">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProductOrderKey" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EffectiveDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ExpiredDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="CurCycleStartTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CurCycleEndTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="BillStatus" type="xs:int" />
+          <xs:element minOccurs="0" name="BindSubscriberNo" nillable="true" type="tns:ArrayOfBindSubscriberNo" />
+          <xs:element minOccurs="0" name="ProductID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Product" nillable="true" type="tns:Product" />
+      <xs:complexType name="ArrayOfBindSubscriberNo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="BindSubscriberNo" nillable="true" type="tns:BindSubscriberNo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfBindSubscriberNo" nillable="true" type="tns:ArrayOfBindSubscriberNo" />
+      <xs:complexType name="BindSubscriberNo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SubscriberNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SubscriberNoType" type="xs:int" />
+          <xs:element minOccurs="0" name="IMSI" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ApplyTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ExpireTime" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BindSubscriberNo" nillable="true" type="tns:BindSubscriberNo" />
+      <xs:complexType name="ArrayOfService">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Service" nillable="true" type="tns:Service" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfService" nillable="true" type="tns:ArrayOfService" />
+      <xs:complexType name="Service">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RegistrationTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="SimpleProperty" nillable="true" type="tns:ArrayOfSimpleProperty" />
+          <xs:element minOccurs="0" name="Parameter" nillable="true" type="tns:ArrayOfParameter" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Service" nillable="true" type="tns:Service" />
+      <xs:complexType name="ArrayOfParameter">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Parameter" nillable="true" type="tns:Parameter" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfParameter" nillable="true" type="tns:ArrayOfParameter" />
+      <xs:complexType name="Parameter">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Index" type="xs:int" />
+          <xs:element minOccurs="0" name="Action" type="xs:int" />
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Parameter" nillable="true" type="tns:Parameter" />
+      <xs:complexType name="SubscriberState">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FirstActiveDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ActiveCAC" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ActiveStop" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="SuspendStop" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DisableStop" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="LifeCycleState" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="DPFlag" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="FraudState" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="LossFlag" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="POSUserState" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="LockedFlag" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="DPEndDate" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SubscriberState" nillable="true" type="tns:SubscriberState" />
+      <xs:complexType name="ArrayOfUserGroup">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="UserGroup" nillable="true" type="tns:UserGroup" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfUserGroup" nillable="true" type="tns:ArrayOfUserGroup" />
+      <xs:complexType name="UserGroup">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GroupID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UserGroup" nillable="true" type="tns:UserGroup" />
+      <xs:complexType name="AccountAdjustmentRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionalInfo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RtnerBehaviour" type="xs:int" />
+          <xs:element minOccurs="0" name="ModifyAcctFeeList" nillable="true" type="tns:ArrayOfModifyAcctFee" />
+          <xs:element minOccurs="0" name="OperateType" type="xs:int" />
+          <xs:element minOccurs="0" name="TransactionID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AccountAdjustmentRequest" nillable="true" type="tns:AccountAdjustmentRequest" />
+      <xs:complexType name="ArrayOfModifyAcctFee">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ModifyAcctFee" nillable="true" type="tns:ModifyAcctFee" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfModifyAcctFee" nillable="true" type="tns:ArrayOfModifyAcctFee" />
+      <xs:complexType name="ModifyAcctFee">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Amount" type="xs:long" />
+          <xs:element minOccurs="0" name="ProductID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExpiryDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ResourceType" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ModifyAcctFee" nillable="true" type="tns:ModifyAcctFee" />
+      <xs:element name="AccountAdjustmentResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="ActivateRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccessMethod" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ActivateRequest" nillable="true" type="tns:ActivateRequest" />
+      <xs:element name="ActivateResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="ClaimMissingRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ClaimMissingRequest" nillable="true" type="tns:ClaimMissingRequest" />
+      <xs:element name="ClaimMissingResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="ChangeSubscriberBasicInformationRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionalProperties" nillable="true" type="tns:ArrayOfSimpleProperty" />
+          <xs:element minOccurs="0" name="BelToAreaID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InitialCredit" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Language" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SMSLanguage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="USSDLanguage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ChangeSubscriberBasicInformationRequest" nillable="true" type="tns:ChangeSubscriberBasicInformationRequest" />
+      <xs:element name="ChangeSubscriberBasicInformationResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="DeleteRechargeBlackListRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OperationType" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DeleteRechargeBlackListRequest" nillable="true" type="tns:DeleteRechargeBlackListRequest" />
+      <xs:element name="DeleteRechargeBlackListResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="DeleteSubscriberRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DeleteAssociatedCustomer" nillable="true" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DeleteSubscriberRequest" nillable="true" type="tns:DeleteSubscriberRequest" />
+      <xs:element name="DeleteSubscriberResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="DisclaimMissingRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DisclaimMissingRequest" nillable="true" type="tns:DisclaimMissingRequest" />
+      <xs:element name="DisclaimMissingResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="ModifyValidityRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ModifyType" type="tns:INModifyType" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ValidityIncrement" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ModifyValidityRequest" nillable="true" type="tns:ModifyValidityRequest" />
+      <xs:simpleType name="INModifyType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="IncrementOverActiveStop" />
+          <xs:enumeration value="IncrementOverCurrentDate" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="INModifyType" nillable="true" type="tns:INModifyType" />
+      <xs:element name="ModifyValidityResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="ReactivateRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ReactivateRequest" nillable="true" type="tns:ReactivateRequest" />
+      <xs:element name="ReactivateResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="SuspendRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="HandlingChargeFlag" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="InitiateType" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SuspendDays" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SuspendRequest" nillable="true" type="tns:SuspendRequest" />
+      <xs:element name="SuspendResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="ModifyVoucherRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OperationType" type="xs:int" />
+          <xs:element minOccurs="0" name="OperationTypeSpecified" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SequenceList" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MNOID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ModifyVoucherRequest" nillable="true" type="tns:ModifyVoucherRequest" />
+      <xs:element name="ModifyVoucherResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="ChangeSubscriberLowBalancePromptRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LowBalancePrompts" nillable="true" type="tns:ArrayOfLowBalancePrompt" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ChangeSubscriberLowBalancePromptRequest" nillable="true" type="tns:ChangeSubscriberLowBalancePromptRequest" />
+      <xs:complexType name="ArrayOfLowBalancePrompt">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="LowBalancePrompt" nillable="true" type="tns:LowBalancePrompt" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfLowBalancePrompt" nillable="true" type="tns:ArrayOfLowBalancePrompt" />
+      <xs:complexType name="LowBalancePrompt">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BalanceLowGate" type="xs:int" />
+          <xs:element minOccurs="0" name="BalanceUpGate" type="xs:int" />
+          <xs:element minOccurs="0" name="CallLowBalanceType" type="xs:int" />
+          <xs:element minOccurs="0" name="OperationType" type="xs:int" />
+          <xs:element minOccurs="0" name="Action" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="LowBalancePrompt" nillable="true" type="tns:LowBalancePrompt" />
+      <xs:element name="ChangeSubscriberLowBalancePromptResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="GetVoucherInformationRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IdentifierUsed" type="tns:VoucherIDType" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PINorSerial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MNOID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetVoucherInformationRequest" nillable="true" type="tns:GetVoucherInformationRequest" />
+      <xs:simpleType name="VoucherIDType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SerialNumber" />
+          <xs:enumeration value="PINNumber" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="VoucherIDType" nillable="true" type="tns:VoucherIDType" />
+      <xs:complexType name="GetVoucherInformationResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="INResponse" nillable="true" type="tns:GenericINResponse" />
+          <xs:element minOccurs="0" name="BatchNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardCosId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardStartDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CardStopDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ChargeNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FaceValue" type="xs:int" />
+          <xs:element minOccurs="0" name="HotCardFlag" type="xs:int" />
+          <xs:element minOccurs="0" name="OprDateTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="OprType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sequence" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TradeTime" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetVoucherInformationResponse" nillable="true" type="tns:GetVoucherInformationResponse" />
+      <xs:complexType name="ProvisionSubscriberRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountInformation" nillable="true" type="tns:Account" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProductList" nillable="true" type="tns:ArrayOfSubscriberProduct" />
+          <xs:element minOccurs="0" name="SubscriberInformation" nillable="true" type="tns:SubscriberDetails" />
+          <xs:element minOccurs="0" name="TransactionID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OpType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TriggerActivation" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SubIdentityType" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ProvisionSubscriberRequest" nillable="true" type="tns:ProvisionSubscriberRequest" />
+      <xs:complexType name="Account">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BillCycleType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PropertyList" nillable="true" type="tns:ArrayOfSimpleProperty" />
+          <xs:element minOccurs="0" name="RelationCustomer" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Account" nillable="true" type="tns:Account" />
+      <xs:complexType name="ArrayOfSubscriberProduct">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="SubscriberProduct" nillable="true" type="tns:SubscriberProduct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfSubscriberProduct" nillable="true" type="tns:ArrayOfSubscriberProduct" />
+      <xs:complexType name="SubscriberProduct">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PropertyList" nillable="true" type="tns:ArrayOfSimpleProperty" />
+          <xs:element minOccurs="0" name="ExpireDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="EffectiveDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="OperationType" type="xs:int" />
+          <xs:element minOccurs="0" name="ValidMode" type="tns:ValidMode" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SubscriberProduct" nillable="true" type="tns:SubscriberProduct" />
+      <xs:simpleType name="ValidMode">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Immediately" />
+          <xs:enumeration value="NextBillCycle" />
+          <xs:enumeration value="NextDay" />
+          <xs:enumeration value="FutureDay" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="ValidMode" nillable="true" type="tns:ValidMode" />
+      <xs:element name="ProvisionSubscriberResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="QuerySubscriberLowerBalancePromptRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="QuerySubscriberLowerBalancePromptRequest" nillable="true" type="tns:QuerySubscriberLowerBalancePromptRequest" />
+      <xs:complexType name="QuerySubscriberLowerBalancePromptResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LowBalancePrompts" nillable="true" type="tns:ArrayOfLowBalancePrompt" />
+          <xs:element minOccurs="0" name="INResponse" nillable="true" type="tns:GenericINResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="QuerySubscriberLowerBalancePromptResponse" nillable="true" type="tns:QuerySubscriberLowerBalancePromptResponse" />
+      <xs:complexType name="ChangeMainProductRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BCChangeMode" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="CustID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EffectiveDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="HandlingChargeFlag" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NewBillCycleType" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="POSAcctCredit" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="POSAcctInitBal" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="PPSAcctCredit" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="PPSAcctInitBal" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:SubscriberProduct" />
+          <xs:element minOccurs="0" name="RemovedProduct" nillable="true" type="tns:SubscriberProduct" />
+          <xs:element minOccurs="0" name="ValidMode" type="tns:ValidMode" />
+          <xs:element name="NewMainProductId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ChangeMainProductRequest" nillable="true" type="tns:ChangeMainProductRequest" />
+      <xs:element name="ChangeMainProductResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="GetTopupHistoryRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetTopupHistoryRequest" nillable="true" type="tns:GetTopupHistoryRequest" />
+      <xs:complexType name="GetTopupHistoryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="INResponse" nillable="true" type="tns:GenericINResponse" />
+          <xs:element minOccurs="0" name="TopupHistory" nillable="true" type="tns:TopupHistory" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetTopupHistoryResponse" nillable="true" type="tns:GetTopupHistoryResponse" />
+      <xs:complexType name="TopupHistory">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TopupHistoryItem" nillable="true" type="tns:ArrayOfTopupHistoryItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TopupHistory" nillable="true" type="tns:TopupHistory" />
+      <xs:complexType name="ArrayOfTopupHistoryItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="TopupHistoryItem" nillable="true" type="tns:TopupHistoryItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfTopupHistoryItem" nillable="true" type="tns:ArrayOfTopupHistoryItem" />
+      <xs:complexType name="TopupHistoryItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AdditionalInfo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Amount" type="xs:long" />
+          <xs:element minOccurs="0" name="BalanceAfterTransaction" type="xs:long" />
+          <xs:element minOccurs="0" name="Bonus" nillable="true" type="tns:ArrayOfBonus" />
+          <xs:element minOccurs="0" name="InternalSerialNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PaymentMode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Reversed" type="xs:boolean" />
+          <xs:element minOccurs="0" name="TopupDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VoucherSerialNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TopupHistoryItem" nillable="true" type="tns:TopupHistoryItem" />
+      <xs:complexType name="ArrayOfBonus">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Bonus" nillable="true" type="tns:Bonus" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfBonus" nillable="true" type="tns:ArrayOfBonus" />
+      <xs:complexType name="Bonus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Amount" type="xs:long" />
+          <xs:element minOccurs="0" name="BalanceAfterTransaction" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Bonus" nillable="true" type="tns:Bonus" />
+      <xs:complexType name="ResetVoicemailPasswordRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ResetVoicemailPasswordRequest" nillable="true" type="tns:ResetVoicemailPasswordRequest" />
+      <xs:element name="ResetVoicemailPasswordResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="ModifyVoicemailLanguageRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LanguageID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ModifyVoicemailLanguageRequest" nillable="true" type="tns:ModifyVoicemailLanguageRequest" />
+      <xs:element name="ModifyVoicemailRequestMessage" nillable="true" type="tns:ModifyVoicemailLanguageRequest" />
+      <xs:element name="ModifyVoicemailLanguageResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="UVCCancelTaskRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element name="TaskID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MNOID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UVCCancelTaskRequest" nillable="true" type="tns:UVCCancelTaskRequest" />
+      <xs:element name="UVCCancelTaskResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="UVCCustomizeTaskRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StartupTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="TaskID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TaskParameterItems" nillable="true" type="tns:ArrayOfTaskParameter" />
+          <xs:element minOccurs="0" name="TaskType" type="xs:int" />
+          <xs:element minOccurs="0" name="MNOID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UVCCustomizeTaskRequest" nillable="true" type="tns:UVCCustomizeTaskRequest" />
+      <xs:complexType name="ArrayOfTaskParameter">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="TaskParameter" nillable="true" type="tns:TaskParameter" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfTaskParameter" nillable="true" type="tns:ArrayOfTaskParameter" />
+      <xs:complexType name="TaskParameter">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="BatchNumber" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DeactivateReason" nillable="true" type="q2:ArrayOfstring" />
+          <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="LockReason" nillable="true" type="q3:ArrayOfstring" />
+          <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="NewStopDate" nillable="true" type="q4:ArrayOfdateTime" />
+          <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="StartSequence" nillable="true" type="q5:ArrayOfstring" />
+          <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="StopSequence" nillable="true" type="q6:ArrayOfstring" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TaskParameter" nillable="true" type="tns:TaskParameter" />
+      <xs:element name="UVCCustomizeTaskResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="UVCGetTaskIDRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UVCGetTaskIDRequest" nillable="true" type="tns:UVCGetTaskIDRequest" />
+      <xs:complexType name="UVCGetTaskIDResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TaskID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INResponse" nillable="true" type="tns:GenericINResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UVCGetTaskIDResponse" nillable="true" type="tns:UVCGetTaskIDResponse" />
+      <xs:complexType name="UVCQueryTaskRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element name="TaskID" nillable="true" type="xs:string" />
+          <xs:element name="MNOID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UVCQueryTaskRequest" nillable="true" type="tns:UVCQueryTaskRequest" />
+      <xs:complexType name="UVCQueryTaskResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BatchNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreateTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DeactivationReason" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DealTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DealEndTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="TaskStatus" type="xs:int" />
+          <xs:element minOccurs="0" name="StartSequence" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StopSequence" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VCID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LockReason" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FailFile" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FailNumber" type="xs:int" />
+          <xs:element minOccurs="0" name="SkipFile" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SkipNumber" type="xs:int" />
+          <xs:element minOccurs="0" name="SuccessFile" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SuccessNum" type="xs:int" />
+          <xs:element minOccurs="0" name="Total" type="xs:int" />
+          <xs:element minOccurs="0" name="StartupTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="TaskID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INResponse" nillable="true" type="tns:GenericINResponse" />
+          <xs:element minOccurs="0" name="TaskType" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UVCQueryTaskResponse" nillable="true" type="tns:UVCQueryTaskResponse" />
+      <xs:complexType name="TransferBalanceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ModifyAcctFeeList" nillable="true" type="tns:ArrayOfModifyAcctFee" />
+          <xs:element minOccurs="0" name="TransfereeNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TransfererNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TransferType" type="xs:int" />
+          <xs:element minOccurs="0" name="TransactionID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TransferBalanceRequest" nillable="true" type="tns:TransferBalanceRequest" />
+      <xs:element name="TransferBalanceResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="KPNDeactivateMSISDNRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="KPNDeactivateMSISDNRequest" nillable="true" type="tns:KPNDeactivateMSISDNRequest" />
+      <xs:element name="KPNDeactivateResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="ChangeAppendantProductRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MSISDN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:ArrayOfSubscriberProduct" />
+          <xs:element minOccurs="0" name="HandlingChargeFlag" type="xs:int" />
+          <xs:element minOccurs="0" name="TransactionID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ChangeAppendantProductRequest" nillable="true" type="tns:ChangeAppendantProductRequest" />
+      <xs:element name="ChangeAppendantProductResponse" nillable="true" type="tns:GenericINResponse" />
+      <xs:complexType name="SwapMSISDNRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element name="OldMSISDN" nillable="true" type="xs:string" />
+          <xs:element name="NewMSISDN" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SwapMSISDNRequest" nillable="true" type="tns:SwapMSISDNRequest" />
+      <xs:element name="SwapMSISDNResponse" nillable="true" type="tns:GenericINResponse" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfstring">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+      <xs:complexType name="ArrayOfdateTime">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="dateTime" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfdateTime" nillable="true" type="tns:ArrayOfdateTime" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="DebitAccountRequestMessage">
+    <wsdl:part name="DebitAccountRequest" element="tns:DebitAccountRequest" />
+  </wsdl:message>
+  <wsdl:message name="DebitAccountResponseMessage">
+    <wsdl:part name="DebitAccountResponse" element="tns:DebitAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="PaymentRequestMessage">
+    <wsdl:part name="PaymentRequest" element="tns:PaymentRequest" />
+  </wsdl:message>
+  <wsdl:message name="PaymentResponseMessage">
+    <wsdl:part name="PaymentResponse" element="tns:PaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReversePaymentRequestMessage">
+    <wsdl:part name="ReversePaymentRequest" element="tns:ReversePaymentRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReversePaymentResponseMessage">
+    <wsdl:part name="ReversePaymentResponse" element="tns:ReversePaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="VoucherRechargeRequestMessage">
+    <wsdl:part name="VoucherRechargeRequest" element="tns:VoucherRechargeRequest" />
+  </wsdl:message>
+  <wsdl:message name="VoucherRechargeResponseMessage">
+    <wsdl:part name="VoucherRechargeResponse" element="tns:VoucherRechargeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountInformationRequestMessage">
+    <wsdl:part name="GetAccountInformationRequest" element="tns:GetAccountInformationRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountInformationResponseMessage">
+    <wsdl:part name="GetAccountInformationResponse" element="tns:GetAccountInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="AccountAdjustmentRequestMessage">
+    <wsdl:part name="AccountAdjustmentRequest" element="tns:AccountAdjustmentRequest" />
+  </wsdl:message>
+  <wsdl:message name="AccountAdjustmentResponseMessage">
+    <wsdl:part name="AccountAdjustmentResponse" element="tns:AccountAdjustmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActivateRequestMessage">
+    <wsdl:part name="ActivateRequest" element="tns:ActivateRequest" />
+  </wsdl:message>
+  <wsdl:message name="ActivateResponseMessage">
+    <wsdl:part name="ActivateResponse" element="tns:ActivateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClaimMissingRequestMessage">
+    <wsdl:part name="ClaimMissingRequest" element="tns:ClaimMissingRequest" />
+  </wsdl:message>
+  <wsdl:message name="ClaimMissingResponseMessage">
+    <wsdl:part name="ClaimMissingResponse" element="tns:ClaimMissingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangeSubscriberBasicInformationRequestMessage">
+    <wsdl:part name="ChangeSubscriberBasicInformationRequest" element="tns:ChangeSubscriberBasicInformationRequest" />
+  </wsdl:message>
+  <wsdl:message name="ChangeSubscriberBasicInformationResponseMessage">
+    <wsdl:part name="ChangeSubscriberBasicInformationResponse" element="tns:ChangeSubscriberBasicInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRechargeBlackListRequestMessage">
+    <wsdl:part name="DeleteRechargeBlackListRequest" element="tns:DeleteRechargeBlackListRequest" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRechargeBlackListResponseMessage">
+    <wsdl:part name="DeleteRechargeBlackListResponse" element="tns:DeleteRechargeBlackListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSubscriberRequestMessage">
+    <wsdl:part name="DeleteSubscriberRequest" element="tns:DeleteSubscriberRequest" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSubscriberResponseMessage">
+    <wsdl:part name="DeleteSubscriberResponse" element="tns:DeleteSubscriberResponse" />
+  </wsdl:message>
+  <wsdl:message name="DisclaimMissingRequestMessage">
+    <wsdl:part name="DisclaimMissingRequest" element="tns:DisclaimMissingRequest" />
+  </wsdl:message>
+  <wsdl:message name="DisclaimMissingResponseMessage">
+    <wsdl:part name="DisclaimMissingResponse" element="tns:DisclaimMissingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyValidityRequestMessage">
+    <wsdl:part name="ModifyValidityRequest" element="tns:ModifyValidityRequest" />
+  </wsdl:message>
+  <wsdl:message name="ModifyValidityResponseMessage">
+    <wsdl:part name="ModifyValidityResponse" element="tns:ModifyValidityResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReactivateRequestMessage">
+    <wsdl:part name="ReactivateRequest" element="tns:ReactivateRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReactivateResponseMessage">
+    <wsdl:part name="ReactivateResponse" element="tns:ReactivateResponse" />
+  </wsdl:message>
+  <wsdl:message name="SuspendRequestMessage">
+    <wsdl:part name="SuspendRequest" element="tns:SuspendRequest" />
+  </wsdl:message>
+  <wsdl:message name="SuspendResponseMessage">
+    <wsdl:part name="SuspendResponse" element="tns:SuspendResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyVoucherRequestMessage">
+    <wsdl:part name="ModifyVoucherRequest" element="tns:ModifyVoucherRequest" />
+  </wsdl:message>
+  <wsdl:message name="ModifyVoucherResponseMessage">
+    <wsdl:part name="ModifyVoucherResponse" element="tns:ModifyVoucherResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangeSubscriberLowBalancePromptRequestMessage">
+    <wsdl:part name="ChangeSubscriberLowBalancePromptRequest" element="tns:ChangeSubscriberLowBalancePromptRequest" />
+  </wsdl:message>
+  <wsdl:message name="ChangeSubscriberLowBalancePromptResponseMessage">
+    <wsdl:part name="ChangeSubscriberLowBalancePromptResponse" element="tns:ChangeSubscriberLowBalancePromptResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVoucherInformationRequestMessage">
+    <wsdl:part name="GetVoucherInformationRequest" element="tns:GetVoucherInformationRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetVoucherInformationResponseMessage">
+    <wsdl:part name="GetVoucherInformationResponse" element="tns:GetVoucherInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProvisionSubscriberRequestMessage">
+    <wsdl:part name="ProvisionSubscriberRequest" element="tns:ProvisionSubscriberRequest" />
+  </wsdl:message>
+  <wsdl:message name="ProvisionSubscriberResponseMessage">
+    <wsdl:part name="ProvisionSubscriberResponse" element="tns:ProvisionSubscriberResponse" />
+  </wsdl:message>
+  <wsdl:message name="QuerySubscriberLowerBalancePromptRequestMessage">
+    <wsdl:part name="QuerySubscriberLowerBalancePromptRequest" element="tns:QuerySubscriberLowerBalancePromptRequest" />
+  </wsdl:message>
+  <wsdl:message name="QuerySubscriberLowerBalancePromptResponseMessage">
+    <wsdl:part name="QuerySubscriberLowerBalancePromptResponse" element="tns:QuerySubscriberLowerBalancePromptResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangeMainProductRequestMessage">
+    <wsdl:part name="ChangeMainProductRequest" element="tns:ChangeMainProductRequest" />
+  </wsdl:message>
+  <wsdl:message name="ChangeMainProductResponseMessage">
+    <wsdl:part name="ChangeMainProductResponse" element="tns:ChangeMainProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTopupHistoryRequestMessage">
+    <wsdl:part name="GetTopupHistoryRequest" element="tns:GetTopupHistoryRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetTopupHistoryResponseMessage">
+    <wsdl:part name="GetTopupHistoryResponse" element="tns:GetTopupHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResetVoicemailPasswordRequestMessage">
+    <wsdl:part name="ResetVoicemailPasswordRequest" element="tns:ResetVoicemailPasswordRequest" />
+  </wsdl:message>
+  <wsdl:message name="ResetVoicemailPasswordResponseMessage">
+    <wsdl:part name="ResetVoicemailPasswordResponse" element="tns:ResetVoicemailPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyVoicemailLanguageRequestMessage">
+    <wsdl:part name="ModifyVoicemailRequestMessage" element="tns:ModifyVoicemailRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="ModifyVoicemailLanguageResponseMessage">
+    <wsdl:part name="ModifyVoicemailLanguageResponse" element="tns:ModifyVoicemailLanguageResponse" />
+  </wsdl:message>
+  <wsdl:message name="UVCCancelTaskRequestMessage">
+    <wsdl:part name="UVCCancelTaskRequest" element="tns:UVCCancelTaskRequest" />
+  </wsdl:message>
+  <wsdl:message name="UVCCancelTaskResponseMessage">
+    <wsdl:part name="UVCCancelTaskResponse" element="tns:UVCCancelTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="UVCCustomizeTaskRequestMessage">
+    <wsdl:part name="UVCCustomizeTaskRequest" element="tns:UVCCustomizeTaskRequest" />
+  </wsdl:message>
+  <wsdl:message name="UVCCustomizeTaskResponseMessage">
+    <wsdl:part name="UVCCustomizeTaskResponse" element="tns:UVCCustomizeTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="UVCGetTaskIDRequestMessage">
+    <wsdl:part name="UVCGetTaskIDRequest" element="tns:UVCGetTaskIDRequest" />
+  </wsdl:message>
+  <wsdl:message name="UVCGetTaskIDResponseMessage">
+    <wsdl:part name="UVCGetTaskIDResponse" element="tns:UVCGetTaskIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="UVCQueryTaskRequestMessage">
+    <wsdl:part name="UVCQueryTaskRequest" element="tns:UVCQueryTaskRequest" />
+  </wsdl:message>
+  <wsdl:message name="UVCQueryTaskResponseMessage">
+    <wsdl:part name="UVCQueryTaskResponse" element="tns:UVCQueryTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="TransferBalanceRequestMessage">
+    <wsdl:part name="TransferBalanceRequest" element="tns:TransferBalanceRequest" />
+  </wsdl:message>
+  <wsdl:message name="TransferBalanceResponseMessage">
+    <wsdl:part name="TransferBalanceResponse" element="tns:TransferBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="KPNDeactivateMSISDNRequestMessage">
+    <wsdl:part name="KPNDeactivateMSISDNRequest" element="tns:KPNDeactivateMSISDNRequest" />
+  </wsdl:message>
+  <wsdl:message name="KPNDeactivateMSISDNResponeMessage">
+    <wsdl:part name="KPNDeactivateResponse" element="tns:KPNDeactivateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangeAppendantProductRequestMessage">
+    <wsdl:part name="ChangeAppendantProductRequest" element="tns:ChangeAppendantProductRequest" />
+  </wsdl:message>
+  <wsdl:message name="ChangeAppendantProductResponseMessage">
+    <wsdl:part name="ChangeAppendantProductResponse" element="tns:ChangeAppendantProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="SwapMSISDNRequestMessage">
+    <wsdl:part name="SwapMSISDNRequest" element="tns:SwapMSISDNRequest" />
+  </wsdl:message>
+  <wsdl:message name="SwapMSISDNResponseMessage">
+    <wsdl:part name="SwapMSISDNResponse" element="tns:SwapMSISDNResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Services">
+    <wsdl:operation name="DebitAccount">
+      <wsdl:input wsaw:Action="DebitAccount" name="DebitAccountRequestMessage" message="tns:DebitAccountRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/DebitAccountResponse" name="DebitAccountResponseMessage" message="tns:DebitAccountResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Payment">
+      <wsdl:input wsaw:Action="Payment" name="PaymentRequestMessage" message="tns:PaymentRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/PaymentResponse" name="PaymentResponseMessage" message="tns:PaymentResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReversePayment">
+      <wsdl:input wsaw:Action="ReversePayment" name="ReversePaymentRequestMessage" message="tns:ReversePaymentRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/ReversePaymentResponse" name="ReversePaymentResponseMessage" message="tns:ReversePaymentResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VoucherRecharge">
+      <wsdl:input wsaw:Action="VoucherRecharge" name="VoucherRechargeRequestMessage" message="tns:VoucherRechargeRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/VoucherRechargeResponse" name="VoucherRechargeResponseMessage" message="tns:VoucherRechargeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountInformation">
+      <wsdl:input wsaw:Action="GetAccountInformation" name="GetAccountInformationRequestMessage" message="tns:GetAccountInformationRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/GetAccountInformationResponse" name="GetAccountInformationResponseMessage" message="tns:GetAccountInformationResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AccountAdjustment">
+      <wsdl:input wsaw:Action="AccountAdjustment" name="AccountAdjustmentRequestMessage" message="tns:AccountAdjustmentRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/AccountAdjustmentResponse" name="AccountAdjustmentResponseMessage" message="tns:AccountAdjustmentResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Activate">
+      <wsdl:input wsaw:Action="Activate" name="ActivateRequestMessage" message="tns:ActivateRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/ActivateResponse" name="ActivateResponseMessage" message="tns:ActivateResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClaimMissing">
+      <wsdl:input wsaw:Action="ClaimMissing" name="ClaimMissingRequestMessage" message="tns:ClaimMissingRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/ClaimMissingResponse" name="ClaimMissingResponseMessage" message="tns:ClaimMissingResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeSubscriberBasicInformation">
+      <wsdl:input wsaw:Action="ChangeSubscriberBasicInformation" name="ChangeSubscriberBasicInformationRequestMessage" message="tns:ChangeSubscriberBasicInformationRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/ChangeSubscriberBasicInformationResponse" name="ChangeSubscriberBasicInformationResponseMessage" message="tns:ChangeSubscriberBasicInformationResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRechargeBlackList">
+      <wsdl:input wsaw:Action="DeleteRechargeBlackList" name="DeleteRechargeBlackListRequestMessage" message="tns:DeleteRechargeBlackListRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/DeleteRechargeBlackListResponse" name="DeleteRechargeBlackListResponseMessage" message="tns:DeleteRechargeBlackListResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubscriber">
+      <wsdl:input wsaw:Action="DeleteSubscriber" name="DeleteSubscriberRequestMessage" message="tns:DeleteSubscriberRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/DeleteSubscriberResponse" name="DeleteSubscriberResponseMessage" message="tns:DeleteSubscriberResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DisclaimMissing">
+      <wsdl:input wsaw:Action="DisclaimMissing" name="DisclaimMissingRequestMessage" message="tns:DisclaimMissingRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/DisclaimMissingResponse" name="DisclaimMissingResponseMessage" message="tns:DisclaimMissingResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyValidity">
+      <wsdl:input wsaw:Action="ModifyValidity" name="ModifyValidityRequestMessage" message="tns:ModifyValidityRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/ModifyValidityResponse" name="ModifyValidityResponseMessage" message="tns:ModifyValidityResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Reactivate">
+      <wsdl:input wsaw:Action="Reactivate" name="ReactivateRequestMessage" message="tns:ReactivateRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/ReactivateResponse" name="ReactivateResponseMessage" message="tns:ReactivateResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Suspend">
+      <wsdl:input wsaw:Action="Suspend" name="SuspendRequestMessage" message="tns:SuspendRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/SuspendResponse" name="SuspendResponseMessage" message="tns:SuspendResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyVoucher">
+      <wsdl:input wsaw:Action="ModifyVoucher" name="ModifyVoucherRequestMessage" message="tns:ModifyVoucherRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/ModifyVoucherResponse" name="ModifyVoucherResponseMessage" message="tns:ModifyVoucherResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeSubscriberLowBalancePrompt">
+      <wsdl:input wsaw:Action="ChangeSubscriberLowBalancePrompt" name="ChangeSubscriberLowBalancePromptRequestMessage" message="tns:ChangeSubscriberLowBalancePromptRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/ChangeSubscriberLowBalancePromptResponse" name="ChangeSubscriberLowBalancePromptResponseMessage" message="tns:ChangeSubscriberLowBalancePromptResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucherInformation">
+      <wsdl:input wsaw:Action="GetVoucherInformation" name="GetVoucherInformationRequestMessage" message="tns:GetVoucherInformationRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/GetVoucherInformationResponse" name="GetVoucherInformationResponseMessage" message="tns:GetVoucherInformationResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProvisionSubscriber">
+      <wsdl:input wsaw:Action="ProvisionSubscriber" name="ProvisionSubscriberRequestMessage" message="tns:ProvisionSubscriberRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/ProvisionSubscriberResponse" name="ProvisionSubscriberResponseMessage" message="tns:ProvisionSubscriberResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QuerySubscriberLowerBalancePrompt">
+      <wsdl:input wsaw:Action="QuerySubscriberLowerBalancePrompt" name="QuerySubscriberLowerBalancePromptRequestMessage" message="tns:QuerySubscriberLowerBalancePromptRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/QuerySubscriberLowerBalancePromptResponse" name="QuerySubscriberLowerBalancePromptResponseMessage" message="tns:QuerySubscriberLowerBalancePromptResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeMainProduct">
+      <wsdl:input wsaw:Action="ChangeMainProduct" name="ChangeMainProductRequestMessage" message="tns:ChangeMainProductRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/ChangeMainProductResponse" name="ChangeMainProductResponseMessage" message="tns:ChangeMainProductResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTopupHistory">
+      <wsdl:input wsaw:Action="GetTopupHistory" name="GetTopupHistoryRequestMessage" message="tns:GetTopupHistoryRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/GetTopupHistoryResponse" name="GetTopupHistoryResponseMessage" message="tns:GetTopupHistoryResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetVoicemailPassword">
+      <wsdl:input wsaw:Action="http://Lebara.IN2.Common/Services/ResetVoicemailPassword" name="ResetVoicemailPasswordRequestMessage" message="tns:ResetVoicemailPasswordRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/ResetVoicemailPasswordResponse" name="ResetVoicemailPasswordResponseMessage" message="tns:ResetVoicemailPasswordResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyVoicemailLanguage">
+      <wsdl:input wsaw:Action="http://Lebara.IN2.Common/Services/ModifyVoicemailLanguage" name="ModifyVoicemailLanguageRequestMessage" message="tns:ModifyVoicemailLanguageRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/ModifyVoicemailLanguageResponse" name="ModifyVoicemailLanguageResponseMessage" message="tns:ModifyVoicemailLanguageResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UVCCancelTask">
+      <wsdl:input wsaw:Action="UVCCancelTask" name="UVCCancelTaskRequestMessage" message="tns:UVCCancelTaskRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/UVCCancelTaskResponse" name="UVCCancelTaskResponseMessage" message="tns:UVCCancelTaskResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UVCCustomizeTask">
+      <wsdl:input wsaw:Action="UVCCustomizeTask" name="UVCCustomizeTaskRequestMessage" message="tns:UVCCustomizeTaskRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/UVCCustomizeTaskResponse" name="UVCCustomizeTaskResponseMessage" message="tns:UVCCustomizeTaskResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UVCGetTaskID">
+      <wsdl:input wsaw:Action="UVCGetTaskID" name="UVCGetTaskIDRequestMessage" message="tns:UVCGetTaskIDRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/UVCGetTaskIDResponse" name="UVCGetTaskIDResponseMessage" message="tns:UVCGetTaskIDResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UVCQueryTask">
+      <wsdl:input wsaw:Action="UVCQueryTask" name="UVCQueryTaskRequestMessage" message="tns:UVCQueryTaskRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/UVCQueryTaskResponse" name="UVCQueryTaskResponseMessage" message="tns:UVCQueryTaskResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TransferBalance">
+      <wsdl:input wsaw:Action="TransferBalance" name="TransferBalanceRequestMessage" message="tns:TransferBalanceRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/TransferBalanceResponse" name="TransferBalanceResponseMessage" message="tns:TransferBalanceResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="KPNDeactivateMSISDN">
+      <wsdl:input wsaw:Action="KPNDeactivateMSISDN" name="KPNDeactivateMSISDNRequestMessage" message="tns:KPNDeactivateMSISDNRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/KPNDeactivateMSISDNResponse" name="KPNDeactivateMSISDNResponeMessage" message="tns:KPNDeactivateMSISDNResponeMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeAppendantProduct">
+      <wsdl:input wsaw:Action="ChangeAppendantProduct" name="ChangeAppendantProductRequestMessage" message="tns:ChangeAppendantProductRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/ChangeAppendantProductResponse" name="ChangeAppendantProductResponseMessage" message="tns:ChangeAppendantProductResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SwapMSISDN">
+      <wsdl:input wsaw:Action="SwapMSISDN" name="SwapMSISDNRequestMessage" message="tns:SwapMSISDNRequestMessage" />
+      <wsdl:output wsaw:Action="http://Lebara.IN2.Common/Services/SwapMSISDNResponse" name="SwapMSISDNResponseMessage" message="tns:SwapMSISDNResponseMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IN2basicHttpEndPoint" type="tns:Services">
+    <wsp:PolicyReference URI="#IN2basicHttpEndPoint_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DebitAccount">
+      <soap:operation soapAction="DebitAccount" style="document" />
+      <wsdl:input name="DebitAccountRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DebitAccountResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Payment">
+      <soap:operation soapAction="Payment" style="document" />
+      <wsdl:input name="PaymentRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="PaymentResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReversePayment">
+      <soap:operation soapAction="ReversePayment" style="document" />
+      <wsdl:input name="ReversePaymentRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReversePaymentResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VoucherRecharge">
+      <soap:operation soapAction="VoucherRecharge" style="document" />
+      <wsdl:input name="VoucherRechargeRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VoucherRechargeResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountInformation">
+      <soap:operation soapAction="GetAccountInformation" style="document" />
+      <wsdl:input name="GetAccountInformationRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAccountInformationResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountAdjustment">
+      <soap:operation soapAction="AccountAdjustment" style="document" />
+      <wsdl:input name="AccountAdjustmentRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AccountAdjustmentResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Activate">
+      <soap:operation soapAction="Activate" style="document" />
+      <wsdl:input name="ActivateRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ActivateResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClaimMissing">
+      <soap:operation soapAction="ClaimMissing" style="document" />
+      <wsdl:input name="ClaimMissingRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ClaimMissingResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeSubscriberBasicInformation">
+      <soap:operation soapAction="ChangeSubscriberBasicInformation" style="document" />
+      <wsdl:input name="ChangeSubscriberBasicInformationRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ChangeSubscriberBasicInformationResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRechargeBlackList">
+      <soap:operation soapAction="DeleteRechargeBlackList" style="document" />
+      <wsdl:input name="DeleteRechargeBlackListRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DeleteRechargeBlackListResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubscriber">
+      <soap:operation soapAction="DeleteSubscriber" style="document" />
+      <wsdl:input name="DeleteSubscriberRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DeleteSubscriberResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisclaimMissing">
+      <soap:operation soapAction="DisclaimMissing" style="document" />
+      <wsdl:input name="DisclaimMissingRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DisclaimMissingResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyValidity">
+      <soap:operation soapAction="ModifyValidity" style="document" />
+      <wsdl:input name="ModifyValidityRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ModifyValidityResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reactivate">
+      <soap:operation soapAction="Reactivate" style="document" />
+      <wsdl:input name="ReactivateRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReactivateResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Suspend">
+      <soap:operation soapAction="Suspend" style="document" />
+      <wsdl:input name="SuspendRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SuspendResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyVoucher">
+      <soap:operation soapAction="ModifyVoucher" style="document" />
+      <wsdl:input name="ModifyVoucherRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ModifyVoucherResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeSubscriberLowBalancePrompt">
+      <soap:operation soapAction="ChangeSubscriberLowBalancePrompt" style="document" />
+      <wsdl:input name="ChangeSubscriberLowBalancePromptRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ChangeSubscriberLowBalancePromptResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVoucherInformation">
+      <soap:operation soapAction="GetVoucherInformation" style="document" />
+      <wsdl:input name="GetVoucherInformationRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetVoucherInformationResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProvisionSubscriber">
+      <soap:operation soapAction="ProvisionSubscriber" style="document" />
+      <wsdl:input name="ProvisionSubscriberRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ProvisionSubscriberResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySubscriberLowerBalancePrompt">
+      <soap:operation soapAction="QuerySubscriberLowerBalancePrompt" style="document" />
+      <wsdl:input name="QuerySubscriberLowerBalancePromptRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="QuerySubscriberLowerBalancePromptResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeMainProduct">
+      <soap:operation soapAction="ChangeMainProduct" style="document" />
+      <wsdl:input name="ChangeMainProductRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ChangeMainProductResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTopupHistory">
+      <soap:operation soapAction="GetTopupHistory" style="document" />
+      <wsdl:input name="GetTopupHistoryRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetTopupHistoryResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetVoicemailPassword">
+      <soap:operation soapAction="http://Lebara.IN2.Common/Services/ResetVoicemailPassword" style="document" />
+      <wsdl:input name="ResetVoicemailPasswordRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ResetVoicemailPasswordResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyVoicemailLanguage">
+      <soap:operation soapAction="http://Lebara.IN2.Common/Services/ModifyVoicemailLanguage" style="document" />
+      <wsdl:input name="ModifyVoicemailLanguageRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ModifyVoicemailLanguageResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UVCCancelTask">
+      <soap:operation soapAction="UVCCancelTask" style="document" />
+      <wsdl:input name="UVCCancelTaskRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UVCCancelTaskResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UVCCustomizeTask">
+      <soap:operation soapAction="UVCCustomizeTask" style="document" />
+      <wsdl:input name="UVCCustomizeTaskRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UVCCustomizeTaskResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UVCGetTaskID">
+      <soap:operation soapAction="UVCGetTaskID" style="document" />
+      <wsdl:input name="UVCGetTaskIDRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UVCGetTaskIDResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UVCQueryTask">
+      <soap:operation soapAction="UVCQueryTask" style="document" />
+      <wsdl:input name="UVCQueryTaskRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UVCQueryTaskResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransferBalance">
+      <soap:operation soapAction="TransferBalance" style="document" />
+      <wsdl:input name="TransferBalanceRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="TransferBalanceResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KPNDeactivateMSISDN">
+      <soap:operation soapAction="KPNDeactivateMSISDN" style="document" />
+      <wsdl:input name="KPNDeactivateMSISDNRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="KPNDeactivateMSISDNResponeMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeAppendantProduct">
+      <soap:operation soapAction="ChangeAppendantProduct" style="document" />
+      <wsdl:input name="ChangeAppendantProductRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ChangeAppendantProductResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SwapMSISDN">
+      <soap:operation soapAction="SwapMSISDN" style="document" />
+      <wsdl:input name="SwapMSISDNRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SwapMSISDNResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Main">
+    <wsdl:port name="IN2basicHttpEndPoint" binding="tns:IN2basicHttpEndPoint">
+      <soap:address location="http://leb-nttintwis01.gbr.lebara/lebara.in2/Lebara.OCSAPI.Test/Service.svc/IN2basicHttpEndPoint" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

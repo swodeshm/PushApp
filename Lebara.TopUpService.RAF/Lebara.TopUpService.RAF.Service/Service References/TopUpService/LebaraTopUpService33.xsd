@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://Lebara.TopUp.Service.Schema.RequestHeader" elementFormDefault="qualified" targetNamespace="http://Lebara.TopUp.Service.Schema.RequestHeader" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="RequestHeader">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="ITData">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="IPAddress" type="xs:string" />
+              <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="Version" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="Locale" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="CountryCode" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="LoginInfo">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="UserName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="Password" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="Token" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="VendorInfo">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="Name" nillable="true" type="xs:string" />
+              <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="Channel" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

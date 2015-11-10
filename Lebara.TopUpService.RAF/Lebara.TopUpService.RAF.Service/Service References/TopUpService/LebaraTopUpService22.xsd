@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://Lebara.TopUp.Service.Schema.TopUpHistoryResponse" elementFormDefault="qualified" targetNamespace="http://Lebara.TopUp.Service.Schema.TopUpHistoryResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd33" namespace="http://Lebara.Topup.Service.Common.Schema" />
+  <xs:complexType name="TopUpHistoryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="StatusCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="StatusDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="ErrorCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="fieldNames" type="tns:ArrayOfNameType" />
+      <xs:element xmlns:q1="http://Lebara.Topup.Service.Common.Schema" minOccurs="0" maxOccurs="unbounded" form="unqualified" name="fieldData" type="q1:FieldDataType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfNameType">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://Lebara.Topup.Service.Common.Schema" minOccurs="0" maxOccurs="unbounded" form="unqualified" name="nameType" type="q2:NameType" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

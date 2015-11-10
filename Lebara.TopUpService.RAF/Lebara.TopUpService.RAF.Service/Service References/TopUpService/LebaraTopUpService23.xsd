@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://LebaraTopUpServices.com" elementFormDefault="qualified" targetNamespace="http://LebaraTopUpServices.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd1" namespace="http://Lebara.TopUp.Service.Schema.ValidateMSISDNRequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd3" namespace="http://Lebara.TopUp.Service.Schema.ValidateMSISDNResponse" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd4" namespace="http://Lebara.TopUp.Service.Schema.GetDenominationsRequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd5" namespace="http://Lebara.TopUp.Service.Schema.GetDenominationsResponse" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd6" namespace="http://Lebara.TopUp.Service.Schema.TopUpReversalRequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd7" namespace="http://Lebara.TopUp.Service.Schema.TopUpReversalResponse" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd8" namespace="http://Lebara.TopUp.Service.Schema.SendSMSRequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd9" namespace="http://Lebara.TopUp.Service.Schema.SendSMSResponse" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd10" namespace="http://Lebara.TopUp.Service.Schema.GetAccountInformationRequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd11" namespace="http://Lebara.TopUp.Service.Schema.GetAccountInformationResponse" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd12" namespace="http://Lebara.TopUp.Service.Schema.ApplyRemittancePromotionRequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd13" namespace="http://Lebara.TopUp.Service.Schema.ApplyRemittancePromotionResponse" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd14" namespace="http://Lebara.TopUp.Service.Schema.TopUpRequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd15" namespace="http://Lebara.TopUp.Service.Schema.TopUpResponse" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd16" namespace="http://Lebara.TopUp.Service.Schema.DeactivateVoucherRequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd17" namespace="http://Lebara.TopUp.Service.Schema.DeactivateVoucherResponse" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd18" namespace="http://Lebara.TopUp.Service.Schema.ExchangeSSORequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd19" namespace="http://Lebara.TopUp.Service.Schema.ExchangeSSOResponse" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd20" namespace="http://Lebara.TopUp.Service.Schema.VoucherRechargeRequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd22" namespace="http://Lebara.TopUp.Service.Schema.VoucherRechargeResponse" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd23" namespace="http://Lebara.TopUp.Service.Schema.ProductEligibilityRequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd24" namespace="http://Lebara.TopUp.Service.Schema.ProductEligibilityResponse" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd25" namespace="http://Lebara.TopUp.Service.Schema.SetupAutoTopUpRequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd26" namespace="http://Lebara.TopUp.Service.Schema.SetupAutoTopUpResponse" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd27" namespace="http://Lebara.TopUp.Service.Schema.CreateSubscriberRequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd28" namespace="http://Lebara.TopUp.Service.Schema.CreateSubscriberResponse" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd29" namespace="http://Lebara.TopUp.Service.Schema.QueryVoucherRequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd30" namespace="http://Lebara.TopUp.Service.Schema.QueryVoucherResponse" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd31" namespace="http://Lebara.TopUp.Service.Schema.UsageHistoryRequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd32" namespace="http://Lebara.TopUp.Service.Schema.UsageHistoryResponse" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd34" namespace="http://Lebara.TopUp.Service.Schema.TopUpHistoryRequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd35" namespace="http://Lebara.TopUp.Service.Schema.TopUpHistoryResponse" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd36" namespace="http://Lebara.TopUp.Service.Schema.SetReferralRequest" />
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd37" namespace="http://Lebara.TopUp.Service.Schema.SetReferralResponse" />
+  <xs:element name="ValidateMSISDNRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://Lebara.TopUp.Service.Schema.ValidateMSISDNRequest" minOccurs="0" maxOccurs="1" name="ValidateMSISDNRequestField" type="q1:ValidateMSISDNRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateMSISDNResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://Lebara.TopUp.Service.Schema.ValidateMSISDNResponse" minOccurs="0" maxOccurs="1" name="ValidateMSISDNResponseField" type="q2:ValidateMSISDNResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDenominationsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://Lebara.TopUp.Service.Schema.GetDenominationsRequest" minOccurs="0" maxOccurs="1" name="GetDenominationsRequestField" type="q3:GetDenominationsRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDenominationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://Lebara.TopUp.Service.Schema.GetDenominationsResponse" minOccurs="0" maxOccurs="1" name="GetDenominationsResponseField" type="q4:GetDenominationsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TopUpReversalRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://Lebara.TopUp.Service.Schema.TopUpReversalRequest" minOccurs="0" maxOccurs="1" name="TopUpReversalRequestField" type="q5:TopUpReversalRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TopUpReversalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://Lebara.TopUp.Service.Schema.TopUpReversalResponse" minOccurs="0" maxOccurs="1" name="TopUpReversalResponseField" type="q6:TopUpReversalResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendSMSRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://Lebara.TopUp.Service.Schema.SendSMSRequest" minOccurs="0" maxOccurs="1" name="SendSMSRequestField" type="q7:SendSMSRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendSMSResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://Lebara.TopUp.Service.Schema.SendSMSResponse" minOccurs="0" maxOccurs="1" name="SendSMSResponseField" type="q8:SendSMSResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountInformationRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://Lebara.TopUp.Service.Schema.GetAccountInformationRequest" minOccurs="0" maxOccurs="1" name="GetAccountInformationRequestField" type="q9:GetAccountInformationRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountInformationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://Lebara.TopUp.Service.Schema.GetAccountInformationResponse" minOccurs="0" maxOccurs="1" name="GetAccountInformationResponseField" type="q10:GetAccountInformationResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ApplyRemittancePromotionRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://Lebara.TopUp.Service.Schema.ApplyRemittancePromotionRequest" minOccurs="0" maxOccurs="1" name="ApplyRemittancePromotionRequestField" type="q11:ApplyRemittancePromotionRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ApplyRemittancePromotionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://Lebara.TopUp.Service.Schema.ApplyRemittancePromotionResponse" minOccurs="0" maxOccurs="1" name="ApplyRemittancePromotionResponseField" type="q12:ApplyRemittancePromotionResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TopUpRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://Lebara.TopUp.Service.Schema.TopUpRequest" minOccurs="0" maxOccurs="1" name="TopUpRequestField" type="q13:TopUpRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TopUpResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://Lebara.TopUp.Service.Schema.TopUpResponse" minOccurs="0" maxOccurs="1" name="TopUpResponseField" type="q14:TopUpResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeactivateVoucherRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://Lebara.TopUp.Service.Schema.DeactivateVoucherRequest" minOccurs="0" maxOccurs="1" name="DeactivateVoucherRequestField" type="q15:DeactivateVoucherRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeactivateVoucherResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://Lebara.TopUp.Service.Schema.DeactivateVoucherResponse" minOccurs="0" maxOccurs="1" name="DeactivateVoucherResponseField" type="q16:DeactivateVoucherResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element xmlns:q17="http://Lebara.TopUp.Service.Schema.ExchangeSSORequest" name="ExchangeSSORequestField" type="q17:ExchangeSSORequest" />
+  <xs:element xmlns:q18="http://Lebara.TopUp.Service.Schema.ExchangeSSOResponse" name="ExchangeSSOResponseField" type="q18:ExchangeSSOResponse" />
+  <xs:element xmlns:q19="http://Lebara.TopUp.Service.Schema.VoucherRechargeRequest" name="VoucherRechargeRequestField" type="q19:VoucherRechargeRequest" />
+  <xs:element xmlns:q20="http://Lebara.TopUp.Service.Schema.VoucherRechargeResponse" name="VoucherRechargeResponseField" type="q20:VoucherRechargeResponse" />
+  <xs:element xmlns:q21="http://Lebara.TopUp.Service.Schema.ProductEligibilityRequest" name="ProductEligibilityRequestField" type="q21:ProductEligibilityRequest" />
+  <xs:element xmlns:q22="http://Lebara.TopUp.Service.Schema.ProductEligibilityResponse" name="ProductEligibilityResponseField" type="q22:ProductEligibilityResponse" />
+  <xs:element xmlns:q23="http://Lebara.TopUp.Service.Schema.SetupAutoTopUpRequest" name="SetupAutoTopUpRequestField" type="q23:SetupAutoTopUpRequest" />
+  <xs:element xmlns:q24="http://Lebara.TopUp.Service.Schema.SetupAutoTopUpResponse" name="SetupAutoTopUpResponseField" type="q24:SetupAutoTopUpResponse" />
+  <xs:element xmlns:q25="http://Lebara.TopUp.Service.Schema.CreateSubscriberRequest" name="CreateSubscriberRequestField" type="q25:CreateSubscriberRequest" />
+  <xs:element xmlns:q26="http://Lebara.TopUp.Service.Schema.CreateSubscriberResponse" name="CreateSubscriberResponseField" type="q26:CreateSubscriberResponse" />
+  <xs:element xmlns:q27="http://Lebara.TopUp.Service.Schema.QueryVoucherRequest" name="QueryVoucherRequestField" type="q27:QueryVoucherRequest" />
+  <xs:element xmlns:q28="http://Lebara.TopUp.Service.Schema.QueryVoucherResponse" name="QueryVoucherResponseField" type="q28:QueryVoucherResponse" />
+  <xs:element xmlns:q29="http://Lebara.TopUp.Service.Schema.UsageHistoryRequest" name="UsageHistoryRequestField" type="q29:UsageHistoryRequest" />
+  <xs:element xmlns:q30="http://Lebara.TopUp.Service.Schema.UsageHistoryResponse" name="UsageHistoryResponseField" type="q30:UsageHistoryResponse" />
+  <xs:element xmlns:q31="http://Lebara.TopUp.Service.Schema.TopUpHistoryRequest" name="TopUpHistoryRequestField" type="q31:TopUpHistoryRequest" />
+  <xs:element xmlns:q32="http://Lebara.TopUp.Service.Schema.TopUpHistoryResponse" name="TopUpHistoryResponseField" type="q32:TopUpHistoryResponse" />
+  <xs:element xmlns:q33="http://Lebara.TopUp.Service.Schema.SetReferralRequest" name="SetReferralRequest" type="q33:SetReferralRequest" />
+  <xs:element xmlns:q34="http://Lebara.TopUp.Service.Schema.SetReferralResponse" name="SetReferralResponse" type="q34:SetReferralResponse" />
+</xs:schema>

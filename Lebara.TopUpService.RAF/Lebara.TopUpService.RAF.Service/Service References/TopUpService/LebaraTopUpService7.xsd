@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://Lebara.Topup.Service.Common.Schema" elementFormDefault="qualified" targetNamespace="http://Lebara.Topup.Service.Common.Schema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="NameType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="name" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="type">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="DATE_TIME" />
+            <xs:enumeration value="STRING" />
+            <xs:enumeration value="CURRENCY" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FieldDataType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="fieldValues" type="tns:FieldValuesType" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="notUsed" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FieldValuesType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="Value" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

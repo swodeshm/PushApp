@@ -1,0 +1,16 @@
+DiagnosticsPluginLauncher.exe Information: 0 : [10/11/2015 10:49:38] Emulator config file set to C:\Users\sarath.mohan\Desktop\Project\ggg\Lebara.TopUpService.RAF\Lebara.TopUpService.RAF\csx\Debug\roles\LebaraVoipRAF\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [10/11/2015 10:49:38] DiagnosticsStoreRootPath set to: C:\Users\sarath.mohan\Desktop\Project\ggg\Lebara.TopUpService.RAF\Lebara.TopUpService.RAF\csx\Debug\roles\LebaraVoipRAF\approot
+DiagnosticsPluginLauncher.exe Information: 0 : [10/11/2015 10:49:38] Loading config file: C:\Users\sarath.mohan\Desktop\Project\ggg\Lebara.TopUpService.RAF\Lebara.TopUpService.RAF\csx\Debug\roles\LebaraVoipRAF\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [10/11/2015 10:49:38] Checking VM Type
+DiagnosticsPluginLauncher.exe Information: 0 : [10/11/2015 10:49:38] Emulator config file set to C:\Users\sarath.mohan\Desktop\Project\ggg\Lebara.TopUpService.RAF\Lebara.TopUpService.RAF\csx\Debug\roles\LebaraVoipRAF\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [10/11/2015 10:49:38] Extension set to Emulator Mode
+DiagnosticsPluginLauncher.exe Information: 0 : [10/11/2015 10:49:38] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [10/11/2015 10:49:38] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [10/11/2015 10:49:38] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [10/11/2015 10:49:38] No DiagnosticsPlugin is running.
+DiagnosticsPluginLauncher.exe Information: 0 : [10/11/2015 10:49:38] Killing any DiagnosticsPlugin that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [10/11/2015 10:49:39] Killing any MonAgentHost that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [10/11/2015 10:49:39] Diagnostics plugin stopped successfully
+DiagnosticsPluginLauncher.exe Information: 0 : [10/11/2015 10:49:39] Resetting DiagnosticPlugin
+DiagnosticsPluginLauncher.exe Information: 0 : [10/11/2015 10:50:49] DiagnosticsPlugin launched successfully with new configuration
+DiagnosticsPluginLauncher.exe Information: 0 : [10/11/2015 10:50:49] DiagnosticPlugin exited with code 0

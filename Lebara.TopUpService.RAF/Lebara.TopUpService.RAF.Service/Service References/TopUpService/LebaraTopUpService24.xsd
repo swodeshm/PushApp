@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://Lebara.TopUp.Service.Schema.ApplyRemittancePromotionRequest" elementFormDefault="qualified" targetNamespace="http://Lebara.TopUp.Service.Schema.ApplyRemittancePromotionRequest" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd2" namespace="http://Lebara.TopUp.Service.Schema.RequestHeader" />
+  <xs:complexType name="ApplyRemittancePromotionRequest">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://Lebara.TopUp.Service.Schema.RequestHeader" minOccurs="0" maxOccurs="1" ref="q1:RequestHeader" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="Body">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="SenderInfo">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="MSISDN" nillable="true" type="xs:string" />
+                  <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="FirstName" nillable="true" type="xs:string" />
+                  <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="LastName" nillable="true" type="xs:string" />
+                  <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="EmailAddress" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="TransactionInfo">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="Amount" nillable="true" type="xs:string" />
+                  <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="Currency" nillable="true" type="xs:string" />
+                  <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="TransactionID" nillable="true" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="RecipientInfo">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="FirstName" type="xs:string" />
+                  <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="LastName" type="xs:string" />
+                  <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="RecepientCountry" nillable="true" type="xs:string" />
+                  <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="MSISDN" type="xs:string" />
+                  <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="EmailAddress" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

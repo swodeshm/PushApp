@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://Lebara.TopUp.Service.Schema.TopUpRequest" elementFormDefault="qualified" targetNamespace="http://Lebara.TopUp.Service.Schema.TopUpRequest" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://evw3300538/Lebara.TopUp.Service/LebaraTopUpService.svc?xsd=xsd2" namespace="http://Lebara.TopUp.Service.Schema.RequestHeader" />
+  <xs:complexType name="TopUpRequest">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://Lebara.TopUp.Service.Schema.RequestHeader" minOccurs="0" maxOccurs="1" ref="q1:RequestHeader" />
+      <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="Body">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="pTargetMSISDN" nillable="true" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="pSourceMSISDN" nillable="true" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="pAmount" nillable="true" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="pCurrency" nillable="true" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="pDescription" nillable="true" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="pTransactionID" nillable="true" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" form="unqualified" name="pMethodOfPayment" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="VoucherInfo">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="VoucherNumber" type="xs:string" />
+                  <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="DiscountPercentage" type="xs:string" />
+                  <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="DiscountedAmount" type="xs:string" />
+                  <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="VoucherSource" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="Comms">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="SendSMS" type="xs:boolean" />
+                  <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="SendEmail" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="Product">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" maxOccurs="1" form="unqualified" name="ProductID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

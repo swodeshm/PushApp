@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="LebaraTopUp" Class="RAFDataClassDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=10.10.98.77;Initial Catalog=LebaraTopUp;User ID=APP_Topups" SettingsObjectName="WorkerRoleWithSBQueue1.Properties.Settings" SettingsPropertyName="LebaraTopUpConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.spFetchRAFDetails" Method="spFetchRAFDetails">
+    <Parameter Name="MSISDN" Parameter="mSISDN" Type="System.String" DbType="VarChar(25)" />
+    <ElementType Name="spFetchRAFDetailsResult">
+      <Column Name="ReferrerMSISDN" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ReferrerCountryCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ReferrerCurrency" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ReferrerTopupCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ReferreeMSISDN" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ReferreeCountryCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ReferreeCurrency" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ReferalCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ReferreeTopupCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ReferreeAwardedAmount" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="ReferrerAwardedAmount" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="TopUpDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsSuccessful" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ErrorDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="VendorName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProductAwarded" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spUpdateRAFDetails" Method="spUpdateRAFDetails">
+    <Parameter Name="RefererMSISDN" Parameter="refererMSISDN" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="RefereeMSISDN" Parameter="refereeMSISDN" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="ReferalCode" Parameter="referalCode" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TransactionId" Parameter="transactionId" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="RefererTopupCount" Parameter="refererTopupCount" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RefereeTopupCount" Parameter="refereeTopupCount" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_InsertRAFAllTransaction" Method="sp_InsertRAFAllTransaction">
+    <Parameter Name="ReferrerMSISDN" Parameter="referrerMSISDN" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="ReferrerCountryCode" Parameter="referrerCountryCode" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="ReferrerCurrency" Parameter="referrerCurrency" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="ReferrerTopupCount" Parameter="referrerTopupCount" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ReferreeMSISDN" Parameter="referreeMSISDN" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="ReferreeCountryCode" Parameter="referreeCountryCode" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="ReferreeCurrency" Parameter="referreeCurrency" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="ReferalCode" Parameter="referalCode" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ReferreeTopupCount" Parameter="referreeTopupCount" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ReferreeAwardedAmount" Parameter="referreeAwardedAmount" Type="System.Decimal" DbType="Decimal(5,2)" />
+    <Parameter Name="ReferrerAwardedAmount" Parameter="referrerAwardedAmount" Type="System.Decimal" DbType="Decimal(5,2)" />
+    <Parameter Name="TopUpDateTime" Parameter="topUpDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="IsSuccessful" Parameter="isSuccessful" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="ErrorDescription" Parameter="errorDescription" Type="System.String" DbType="VarChar(1)" />
+    <Parameter Name="VendorName" Parameter="vendorName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="TransactionID" Parameter="transactionID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ProductAwarded" Parameter="productAwarded" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
